@@ -33,7 +33,7 @@ public class FileReader {
     }
 
     public static void main(String[] args) {
-        List<File> fs = files("/home/supertool/IdeaProjects/decoratorpage");
+        List<File> fs = files(FileReader.class.getResource("/").getPath());
         for(File f : fs){
             System.out.println(f.getAbsolutePath());
         }
