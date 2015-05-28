@@ -2,10 +2,8 @@ package jodk.decoratorpage;
 
 import jodk.decoratorpage.context.TemplateContext;
 
-import java.io.File;
-
 /**
- * Hello world!
+ * decorator page build
  */
 public class App {
     public static void main(String[] args) {
