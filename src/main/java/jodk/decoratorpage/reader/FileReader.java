@@ -31,11 +31,17 @@ public class FileReader {
         }
         return  files;
     }
-
-    public static void main(String[] args) {
-        List<File> fs = files(FileReader.class.getResource("/").getPath());
-        for(File f : fs){
-            System.out.println(f.getAbsolutePath());
+    public static String getAbsolutePath(String relativePath,File file){
+        String[] relativeAry = relativePath.split("\\.\\./");
+        String path = file.getAbsolutePath();
+        File f = file;
+        for(int i=0;i<relativeAry.length;i++){
+            f = f.getParentFile();
+            path =f.getAbsolutePath();
+            if(i==relativeAry.length-1){
+                path = path+File.separator+relativeAry[i];
+            }
         }
+        return path;
     }
 }
