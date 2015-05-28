@@ -5,14 +5,15 @@
     <title></title>
 </head>
 <body>
-{%t:nav%}
-  custom tag
-{%t:/nav%}
-{%t:body%}
-this is a layout...
-{%t:/body%}
-{%t:foot%}
- copyright 2015
-{%t:/foot%}
+{%t-b:nav%}
+   <div>custom navigation</div>
+{%end%}
+{%t-b:body%}
+<div>this is a layout...</div>
+{%end%}
+{%t-b:footer%}
+<div class="color:red">copyright 2015</div>
+
+{%end%}
 </body>
 </html>

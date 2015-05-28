@@ -2,6 +2,7 @@ package jodk.decoratorpage.context;
 
 import jodk.decoratorpage.context.block.Block;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  */
 public class BlockFile {
     private String path;
-    private List<Block> blocks;
+    private List<Block> blocks =new ArrayList<Block>();
 
     public String getPath() {
         return path;
@@ -25,5 +26,13 @@ public class BlockFile {
 
     public void setBlocks(List<Block> blocks) {
         this.blocks = blocks;
+    }
+    public Block getBlockByTag(String tag){
+        for (Block b: blocks){
+            if(tag.equals(b.getTag())){
+                return b;
+            }
+        }
+        return null;
     }
 }

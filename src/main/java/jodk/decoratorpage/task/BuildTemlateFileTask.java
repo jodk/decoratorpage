@@ -3,6 +3,7 @@ package jodk.decoratorpage.task;
 import jodk.decoratorpage.context.Template;
 import jodk.decoratorpage.context.TemplateFile;
 import jodk.decoratorpage.context.block.Block;
+import jodk.decoratorpage.context.block.TBlock;
 import jodk.decoratorpage.reader.FileReader;
 
 import java.io.BufferedReader;
@@ -32,11 +33,24 @@ public class BuildTemlateFileTask implements Callable<TemplateFile> {
             if (line.trim().isEmpty()) {
                 continue;
             }
+            if(Template.isTBlock(line)){
+                if(block!=null){
+                    block.setComplete(true);
+                    templateFile.getBlocks().add(block);
+                    block = null;
+                }
+            }
             block = Template.circleBlock(block, line);
             if (block.isComplete()) {
                 templateFile.getBlocks().add(block);
+                if(block instanceof TBlock){
+                    Template.getTagMap().put(block.getTag(),block.getTag());
+                }
                 block = null;
             }
+        }
+        if(block !=null){
+            templateFile.getBlocks().add(block);
         }
         return templateFile;
     }

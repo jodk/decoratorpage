@@ -13,11 +13,13 @@ public class BlockFactory {
      */
     public static Block get(String content){
         if(Template.isTExtend(content)!=null){
-            return new EBlock("");
+            return new EBlock(Template.TReg.extend(content));
         }else if(Template.isTBlock(content)){
-            return new TBlock("");
+            return new TBlock(Template.TReg.block(content));
         }else {
-            return new OBlock("");
+            Block block = new OBlock(null);
+            block.append(content+"\n");
+            return block;
         }
     }
 }

@@ -11,16 +11,19 @@ import java.util.concurrent.Callable;
 public class BuildRealFileTask implements Callable<String> {
 
     private final DecoratoredFile decoratoredFile;
-    private final TemplateContext context;
-    public BuildRealFileTask(DecoratoredFile decoratoredFile,TemplateContext context) {
+
+    public BuildRealFileTask(DecoratoredFile decoratoredFile) {
         this.decoratoredFile = decoratoredFile;
-        this.context = context;
     }
+
     @Override
     public String call() throws Exception {
-        String templateFilePath = decoratoredFile.getTemplatePath();
-
-        return null;
+        if (decoratoredFile.DECORATORED) {
+            decoratoredFile.toDestFile();
+            return decoratoredFile.getDesPath();
+        } else {
+            return decoratoredFile.getPath();
+        }
     }
 
 }

@@ -1,4 +1,12 @@
-<%t-extend=../layout/layout.html%>
-{%t:body%}
-        this is index.html
-{%t:/body%}
+{%t-e:../layout/layout.html%}
+{%t-b:body%}
+        <div>this is index.html</div>
+
+{%end%}
+{%t-b:noc%}
+        helloworld
+ {%end%}
+{%t-b:footer%}
+        <div>this is footer from index</div>
+
+    {%end%}
