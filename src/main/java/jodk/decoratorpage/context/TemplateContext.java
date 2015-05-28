@@ -56,16 +56,5 @@ public class TemplateContext {
             forkJoinPool.submit(new BuildRealFileTask(ft.get()));
         }
     }
-
-    public static void main(String[] args) {
-        TemplateContext context = new TemplateContext("/home/supertool/IdeaProjects/decoratorpage/src/test/java/views");
-        try {
-            context.init();
-            context.build();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        System.out.println();
-    }
 }
 
